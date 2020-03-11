@@ -3,7 +3,7 @@ class Login_model extends CI_Model{
 
 	function validar_usuario($usuario, $clave){
         $query = 'SELECT * FROM iniciar_sesion_docente(?,?)';
-        $retorno = $this->db->query( $query, array('usuario'=>$usuario,'contrasenia'=>$clave))->num_rows();
+        $retorno = $this->db->query( $query, array('usuario'=>$usuario,'contrasenia'=>md5($clave)))->num_rows();
 		if($retorno > 0){
 			return true;
 		}

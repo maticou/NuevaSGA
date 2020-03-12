@@ -17,7 +17,7 @@
 	        <a class="nav-link" href="<?=base_url()?>index.php/admin/indexDocentes">Docentes</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="<?=base_url()?>index.php/login/index">Salir</a>
+	        <a class="nav-link" href="<?=base_url()?>index.php/login/cerrarSesion">Salir</a>
 	      </li>
 	    </ul>
 	  </div>

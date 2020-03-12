@@ -38,6 +38,11 @@
                 $this->index();
             }
         }
+
+        public function cerrarSesion(){
+            session_destroy();
+            $this->index();
+        }
 	}
 
 ?>

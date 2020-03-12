@@ -63,7 +63,7 @@
 			$data['resultadoDocentes'] = $this->Admin_model->cargarDatosDocentes();
 			$this->load->view('header');
 			$this->load->view('admin_view_docente',$data);
-		}
+		}		
 	}
 
 ?>

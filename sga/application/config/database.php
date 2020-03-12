@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=db_sga;user=postgres;password=mgonzalez',
+	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=nueva_sga;user=postgres;password=19016777',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
-	'password' => 'mgonzalez',
-	'database' => 'db_sga',
+	'password' => '19016777',
+	'database' => 'nueva_sga',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

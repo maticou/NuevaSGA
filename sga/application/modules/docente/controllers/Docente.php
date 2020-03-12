@@ -9,6 +9,7 @@
 		}
 
 		public function index(){
+			$this->load->view("header");
 			$this->load->view("docente_view");
 		}
 

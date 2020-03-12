@@ -32,7 +32,7 @@ BEGIN
 	WHERE docente.cedula=_rut_profesor 
 	AND tipo_estado.id=docente.estado INTO estado_profesor;
 
-	RETURN estado_profesor
+	RETURN estado_profesor;
 END;
 $$ LANGUAGE plpgsql;
 

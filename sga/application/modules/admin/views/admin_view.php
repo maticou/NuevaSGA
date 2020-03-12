@@ -1,3 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+    <title>SGA - Administrador</title>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/stilo.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/normalize.css">
+</head>
 <h1>Bienvenido administrador</h1>
 <div id="ingreso">
 	<h3>Complete para ingresar nuevo docente</h3>

@@ -1,3 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+    <title>SGA - Iniciar Sesión</title>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/stilo.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/normalize.css">
+</head>
 <br>
 <div class="container">
 	<h4>Iniciar Sesión</h4>

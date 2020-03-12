@@ -23,28 +23,36 @@
 <div id="listado" class="container">
 
 	<table class="table table-striped">
-	<th>Nombre Curso</th>
-	<th>Seccion</th>
-    <th>Año</th>
+	<th>Matricula</th>
+	<th>Nombre</th>
+    <th>Email</th>
+    <th>Nota</th>
+    <th>Situacion</th>
     <th>Acciones</th>
 	<?foreach($resultado as $row):?>
 		<tr>
-			<td><input type="hidden" value="<?=$row->nombre_curso?>" readonly>
-				<p><?=$row->nombre_curso?></p>
+			<td><input type="hidden" value="<?=$row->matricula?>" readonly>
+				<p><?=$row->matricula?></p>
 			</td>
-			<td><input type="hidden"  value="<?=$row->seccion?>" readonly>
-				<p><?=$row->seccion?></p>
+			<td><input type="hidden"  value="<?=$row->nombre?>" readonly>
+				<p><?=$row->nombre?></p>
 			</td>
 			<td>
-				<input type="hidden" value="<?=$row->anio?>" readonly>
-				<p><?=$row->anio?></p>
-      </td>
-      <td>
-        <form method="post" action="<?=base_url()?>index.php/lista_alumnos/ver_alumnos">
-          <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
-          <button type="submit" class="btn btn-primary">Alumnos</button>
-        </form>
-      </td>
+				<input type="hidden" value="<?=$row->email?>" readonly>
+				<p><?=$row->email?></p>
+            </td>
+            <td>
+				<input type="hidden" value="<?=$row->nota?>" readonly>
+				<p><?=$row->nota?></p>
+            </td>
+            <td>
+				<input type="hidden" value="<?=$row->situacion?>" readonly>
+				<p><?=$row->situacion?></p>
+            </td>
+            <td>
+                <button class="btn btn-primary" onclick="ver_evaluaciones(<?=$row->matricula?>)">Evaluaciones</button>
+                <button class="btn btn-primary" onclick="ver_observaciones(<?=$row->matricula?>)">Observaciones</button>
+            </td>
 		</tr>
 	<?endforeach;?>
 </table>

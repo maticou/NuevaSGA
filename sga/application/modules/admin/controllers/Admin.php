@@ -63,7 +63,22 @@
 			$data['resultadoDocentes'] = $this->Admin_model->cargarDatosDocentes();
 			$this->load->view('header');
 			$this->load->view('admin_view_docente',$data);
-		}		
+		}	
+
+		public function editarAlumno(){
+			$id_instancia = $this->input->post('id_instancia');
+			echo "$id_instancia";
+		}
+
+		public function editarCurso(){
+			$id_instancia = $this->input->post('id_instancia');
+			echo "$id_instancia";
+		}	
+
+		public function editarDocente(){
+			$id_instancia = $this->input->post('id_instancia');
+			echo "$id_instancia";
+		}
 	}
 
 ?>

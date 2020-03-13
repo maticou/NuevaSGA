@@ -31,7 +31,7 @@
                     $this->admin->index();
                 }
                 else if($this->session->userdata("tipo_usuario")=="Docente"){
-                    $this->docente->index();
+                    $this->docente->cargar_cursos_docente();
                 }
             }
             else{

@@ -74,3 +74,25 @@ BEGIN
 	AND alumno_instancia_curso.instancia_curso=_instancia_curso;
 END;
 $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION obtener_datos_alumno(
+	IN _alumno alumno.num_matricula%TYPE
+) RETURNS TABLE (
+		num_matricula alumno.num_matricula%TYPE,
+		nombre alumno.nombre_completo%TYPE,
+		email alumno.email%TYPE,
+		contrasenia alumno.contrasenia%TYPE,
+		estado alumno.estado%TYPE
+	) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT alumno.num_matricula AS num_matricula,
+	alumno.nombre_completo AS nombre,
+	alumno.email AS email,
+	alumno.contrasenia AS contrasenia,
+	alumno.estado AS estado	
+	FROM alumno
+	WHERE alumno.num_matricula = _alumno;
+END;
+$$ LANGUAGE 'plpgsql';

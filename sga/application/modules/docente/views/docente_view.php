@@ -31,7 +31,7 @@
             <div>
               <form method="post" action="<?=base_url()?>index.php/evaluacion/obtener_evaluaciones_curso">
                 <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
-                <button type="submit" class="btn btn-primary">Evaluaciones</button>
+                <button type="submit" style="margin-left: 10px;" class="btn btn-primary">Evaluaciones</button>
               </form>
             </div>
           </div>

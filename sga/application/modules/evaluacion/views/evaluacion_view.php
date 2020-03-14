@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="<?=base_url()?>index.php/admin/indexCursos">Cursos</a>
+          <a class="nav-link" href="<?=base_url()?>index.php/docente/cargar_cursos_docente">Cursos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=base_url()?>index.php/login/cerrarSesion">Salir</a>
@@ -21,12 +21,15 @@
   </nav>  
 </div>
 
-<br>
-<form method="post" action="<?=base_url()?>index.php/evaluacion/vista_registrar_evaluacion">
-    <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
-    <button type="submit" class="btn btn-primary">Registrar Evaluación</button>
-</form>
-<br>
+<div id="agregarEvaluacion" class="container-fluid" align="center">
+  <br>
+  <form method="post" action="<?=base_url()?>index.php/evaluacion/vista_registrar_evaluacion">
+      <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
+      <button type="submit" class="btn btn-primary">Registrar Evaluación</button>
+  </form>
+  <br>
+</div>
+
 <div id="listado" class="container">
 
 	<table class="table table-striped">

@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="<?=base_url()?>index.php/admin/indexCursos">Cursos</a>
+          <a class="nav-link" href="<?=base_url()?>index.php/docente/cargar_cursos_docente">Cursos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=base_url()?>index.php/login/cerrarSesion">Salir</a>

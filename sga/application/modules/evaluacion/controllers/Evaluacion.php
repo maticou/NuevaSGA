@@ -20,27 +20,48 @@
         }
 
         public function obtener_evaluaciones_curso(){
-            $id_instancia = $this->input.->post('id_instancia');
-        }
-
-        public function ver_alumnos(){
 			$id_instancia = $this->input->post('id_instancia');
-			$this->cargar_alumnos_curso($id_instancia);
+			$data['id_instancia'] = $id_instancia;
+			$data['resultado'] = $this->Evaluacion_model->obtener_evaluaciones_curso($id_instancia);
+			$this->load->view("evaluacion_view", $data);
+		}
+		
+        public function vista_registrar_evaluacion(){
+			$id_instancia = $this->input->post('id_instancia');
+			$data['id_instancia'] = $id_instancia;
+
+			$data['unidades'] = $this->Evaluacion_model->obtener_unidades();
+			$data['tipos_evaluacion'] = $this->Evaluacion_model->obtener_tipos_evaluacion();
+			
+			$this->load->view("registrar_evaluacion_view", $data);
+		}
+		
+		public function almacenar_datos_evaluacion(){
+			$id_instancia = $this->input->post('id_instancia');
+			$fecha = $this->input->post('fecha');
+			$porcentaje = $this->input->post('porcentaje');
+			$unidad = $this->input->post('unidad');
+			$tipo = $this->input->post('tipo');
+			$prorroga = $this->input->post('prorroga');
+			$exigible = $this->input->post('exigible');
+
+			if($exigible == 'true'){
+				$exigible = TRUE;
+			}
+			else{
+				$exigible = FALSE;
+			}
+			
+			$this->Evaluacion_model->registrar_evaluacion($id_instancia,$fecha,$porcentaje,$unidad,$tipo,$prorroga,$exigible);
+
+			$data['id_instancia'] = $id_instancia;
+			$data['resultado'] = $this->Evaluacion_model->obtener_evaluaciones_curso($id_instancia);
+			$this->load->view("evaluacion_view", $data);
 		}
 
-        public function registrar_evaluacion(){
-
+        public function editar_evaluacion(){
+			$id_evaluacion = $this->input->post('id_evaluacion');
         }
-
-        public function_modificar_evaluacion(){
-
-        }
-
-		public function cargar_cursos_docente(){
-			$cedula = $this->session->userdata("cedula");
-			$data['resultado'] = $this->Docente_model->obtener_cursos_docente($cedula);
-			$this->load->view("docente_view",$data);
-		}
 	}
 
 ?>

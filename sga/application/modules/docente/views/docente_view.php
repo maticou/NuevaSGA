@@ -19,10 +19,23 @@
 				<p><?=$row->anio?></p>
       </td>
       <td>
-        <form method="post" action="<?=base_url()?>index.php/lista_alumnos/ver_alumnos">
-          <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
-          <button type="submit" class="btn btn-primary">Alumnos</button>
-        </form>
+        <div class="container">
+          <div class="row">
+            <div>
+              <form method="post" action="<?=base_url()?>index.php/lista_alumnos/ver_alumnos">
+                <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
+                <button type="submit" class="btn btn-primary">Alumnos</button>
+              </form>
+            </div>
+
+            <div>
+              <form method="post" action="<?=base_url()?>index.php/evaluacion/obtener_evaluaciones_curso">
+                <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
+                <button type="submit" class="btn btn-primary">Evaluaciones</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </td>
 		</tr>
 	<?endforeach;?>

@@ -9,11 +9,13 @@
 		}
 
 		public function index(){
+			$this->load->view("header");
 			$this->load->view("lista_docente_view");
 		}
 
 		public function cargar_alumnos_curso($id_instancia){
 			$data['resultado'] = $this->Lista_alumnos_model->cargar_alumnos_curso($id_instancia);
+			$this->load->view("header");
 			$this->load->view('lista_alumnos_view',$data);
 		}
 

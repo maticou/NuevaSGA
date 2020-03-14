@@ -63,7 +63,67 @@
 			$data['resultadoDocentes'] = $this->Admin_model->cargarDatosDocentes();
 			$this->load->view('header');
 			$this->load->view('admin_view_docente',$data);
-		}		
+		}	
+
+		public function editarAlumno(){			
+			$matricula = $this->input->post('id_instancia');
+			$data['resultadoAlumno'] = $this->Admin_model->buscarAlumno($matricula);
+			$this->load->view('header');
+			$this->load->view('editar_alumno_view',$data);			
+		}
+
+		public function actualizarAlumno(){
+			$matricula = $this->input->post('matricula');
+			$nombre = $this->input->post('nombre');
+			$email = $this->input->post('email');
+			$this->Admin_model->actualizarAlumno($matricula,$nombre,$email);
+			$this->index();
+		}
+
+		public function editarCurso(){
+			$id_curso = $this->input->post('id_instancia');
+			$data['resultadoCurso'] = $this->Admin_model->buscarCurso($id_curso);
+			$this->load->view('header');
+			$this->load->view('editar_curso_view',$data);	
+		}	
+
+		public function actualizarCurso(){
+			$id_curso = $this->input->post('id_curso');
+			$nombre = $this->input->post('nombre');			
+			$this->Admin_model->actualizarCurso($id_curso,$nombre);
+			$this->indexCursos();
+		}
+
+		public function editarDocente(){			
+			$cedula = $this->input->post('id_instancia');
+			$data['resultadoDocente'] = $this->Admin_model->buscarDocente($cedula);
+			$this->load->view('header');
+			$this->load->view('editar_docente_view',$data);			
+		}
+
+		public function actualizarDocente(){
+			$cedula = $this->input->post('cedula');
+			$nombre = $this->input->post('nombre');
+			$email = $this->input->post('email');
+			$this->Admin_model->actualizarDocente($cedula,$nombre,$email);
+			$this->indexDocentes();
+		}
+
+		public function agregarNuevoAlumno(){
+			$this->load->view('header');
+			$this->load->view('agregar_alumno_view');
+		}
+
+		public function agregarNuevoCurso(){
+			$this->load->view('header');
+			$this->load->view('agregar_curso_view');
+		}
+
+		public function agregarNuevoDocente(){
+			$this->load->view('header');
+			$this->load->view('agregar_docente_view');
+		}
+
 	}
 
 ?>

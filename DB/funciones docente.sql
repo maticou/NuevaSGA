@@ -38,23 +38,3 @@ BEGIN
 	WHERE alumno_instancia_curso.id = _id_instancia;
 END;
 $$ LANGUAGE plpgsql;
-
-INSERT INTO public.curso(nombre)VALUES ('Solucion Algoritmica');
-INSERT INTO public.curso(nombre)VALUES ('Sistemas distribuidos');
-INSERT INTO public.curso(nombre)VALUES ('Diseño de Bases de Datos');
-INSERT INTO public.curso(nombre)VALUES ('Calculo 1');
-INSERT INTO public.curso(nombre)VALUES ('Programacion Avanzada');
-INSERT INTO public.curso(nombre)VALUES ('Seguridad informatica');
-
-INSERT INTO public.instancia_curso(periodo, seccion, anio, curso, docente, porcentaje_restante)
-	VALUES (1, 'A', 2020, 1, '11765740K', 100);
-INSERT INTO public.instancia_curso(periodo, seccion, anio, curso, docente, porcentaje_restante)
-	VALUES (1, 'A', 2020, 2, '11765740K', 100);
-INSERT INTO public.instancia_curso(periodo, seccion, anio, curso, docente, porcentaje_restante)
-	VALUES (1, 'A', 2020, 3, '11765740K', 100);
-INSERT INTO public.instancia_curso(periodo, seccion, anio, curso, docente, porcentaje_restante)
-	VALUES (1, 'A', 2020, 4, '11765740K', 100);
-INSERT INTO public.instancia_curso(periodo, seccion, anio, curso, docente, porcentaje_restante)
-	VALUES (1, 'A', 2020, 5, '11765740K', 100);
-INSERT INTO public.instancia_curso(periodo, seccion, anio, curso, docente, porcentaje_restante)
-	VALUES (1, 'A', 2020, 6, '11765740K', 100);

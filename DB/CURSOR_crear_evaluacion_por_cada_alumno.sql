@@ -20,7 +20,7 @@ BEGIN
 		SET porcentaje_restante=(porcentaje_restante-NEW.porcentaje) 
 		WHERE instancia_curso.id = reg.instancia_curso;
 		WHILE (FOUND) LOOP
-			CALL crear_instancia_evaluacion(reg.num_matricula, NEW.id, NEW.instancia_curso);
+			CALL agregar_instancia_evaluacion(reg.num_matricula, NEW.id, NEW.instancia_curso);
 			FETCH cursor_alumnos INTO reg;
 		END LOOP;
 	ELSE

@@ -32,7 +32,7 @@ BEGIN
 	WHERE docente.cedula=_rut_profesor 
 	AND tipo_estado.id=docente.estado INTO estado_profesor;
 
-	RETURN estado_profesor;
+	RETURN estado_profesor
 END;
 $$ LANGUAGE plpgsql;
 
@@ -94,5 +94,43 @@ BEGIN
 	alumno.estado AS estado	
 	FROM alumno
 	WHERE alumno.num_matricula = _alumno;
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION obtener_datos_curso(
+	IN _id curso.id%TYPE
+) RETURNS TABLE (
+		id curso.id%TYPE,
+		nombre curso.nombre%TYPE
+	) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT curso.id AS id,
+	curso.nombre AS nombre
+	FROM curso
+	WHERE curso.id = _id;
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION obtener_datos_docente(
+	IN _cedula docente.cedula%TYPE
+) RETURNS TABLE (
+		cedula docente.cedula%TYPE,
+		nombre docente.nombre_completo%TYPE,
+		email docente.email%TYPE,
+		contrasenia docente.contrasenia%TYPE,
+		estado docente.estado%TYPE
+	) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT docente.cedula AS cedula,
+	docente.nombre_completo AS nombre,
+	docente.email AS email,
+	docente.contrasenia AS contrasenia,
+	docente.estado AS estado	
+	FROM docente
+	WHERE docente.cedula = _cedula;
 END;
 $$ LANGUAGE 'plpgsql';

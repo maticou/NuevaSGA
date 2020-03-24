@@ -25,7 +25,7 @@ CREATE OR REPLACE FUNCTION obtener_alumnos_curso(
 		nombre alumno.nombre_completo%TYPE,
 		email alumno.email%TYPE,
 		nota alumno_instancia_curso.nota_final%TYPE,
-		situacion alumno_instancia_curso.situacion%TYPE
+		situacion situacion_alumno_instancia_curso.situacion%TYPE
 	) AS $$
 BEGIN
 	RETURN QUERY
@@ -33,9 +33,32 @@ BEGIN
 	alumno.nombre_completo AS nombre,
 	alumno.email AS email,
 	alumno_instancia_curso.nota_final AS nota,
-	alumno_instancia_curso.situacion AS situacion
-	FROM alumno, alumno_instancia_curso
+	situacion_alumno_instancia_curso.situacion AS situacion
+	FROM alumno, alumno_instancia_curso, situacion_alumno_instancia_curso
 	WHERE alumno_instancia_curso.instancia_curso = _id_instancia
-	AND alumno_instancia_curso.alumno = alumno.num_matricula;
+	AND alumno_instancia_curso.alumno = alumno.num_matricula
+	AND situacion_alumno_instancia_curso.id = alumno_instancia_curso.situacion;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION obtener_alumnos_curso_no_inscritos(
+		_id_instancia instancia_curso.id%TYPE
+	) RETURNS TABLE (
+		matricula alumno.num_matricula%TYPE,
+		nombre alumno.nombre_completo%TYPE
+	) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT alumno.num_matricula AS matricula,
+	alumno.nombre_completo AS nombre
+	FROM alumno
+	EXCEPT
+	SELECT alumno.num_matricula AS matricula,
+	alumno.nombre_completo AS nombre
+	FROM alumno, alumno_instancia_curso, situacion_alumno_instancia_curso
+	WHERE alumno_instancia_curso.instancia_curso = _id_instancia
+	AND alumno_instancia_curso.alumno = alumno.num_matricula
+	AND situacion_alumno_instancia_curso.id = alumno_instancia_curso.situacion;
 END;
 $$ LANGUAGE plpgsql;

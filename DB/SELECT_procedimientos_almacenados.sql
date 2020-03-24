@@ -139,6 +139,7 @@ $$ LANGUAGE 'plpgsql';
 CREATE OR REPLACE FUNCTION obtener_instancias_curso(
 	_curso curso.id%TYPE
 	) RETURNS TABLE (
+		id instancia_curso.id%TYPE,
 		nombre curso.nombre%TYPE,
 		periodo tipo_periodo.tipo%TYPE,
 		seccion instancia_curso.seccion%TYPE,
@@ -148,7 +149,8 @@ CREATE OR REPLACE FUNCTION obtener_instancias_curso(
 	) AS $$
 BEGIN
 	RETURN QUERY
-	SELECT curso.nombre AS nombre_curso,
+	SELECT instancia_curso.id AS id,
+	curso.nombre AS nombre_curso,
 	tipo_periodo.tipo AS periodo,
 	instancia_curso.seccion AS seccion,
 	instancia_curso.anio AS anio,

@@ -18,6 +18,23 @@ CREATE TABLE administrador(
         ON DELETE NO ACTION
 );
 
+
+CREATE TABLE director(
+    cedula character varying(9) NOT NULL,
+    nombre_completo character varying(100) NOT NULL,
+    email character varying(50) UNIQUE NOT NULL,
+    contrasenia character varying(50) NOT NULL,
+    estado integer DEFAULT 1 NOT NULL,
+    
+    CONSTRAINT cedula_director_pkey PRIMARY KEY (cedula),
+
+    CONSTRAINT estado FOREIGN KEY (estado)
+    REFERENCES tipo_estado(id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+
 CREATE TABLE docente(
     cedula character varying(9) NOT NULL,
     nombre_completo character varying(100) NOT NULL,

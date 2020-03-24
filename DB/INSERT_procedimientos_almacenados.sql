@@ -43,6 +43,38 @@ $$ LANGUAGE plpgsql;
 
 
 
+CREATE OR REPLACE PROCEDURE agregar_director(
+	_cedula director.cedula%TYPE,
+	_nombre_completo director.nombre_completo%TYPE,
+	_email director.email%TYPE,
+	_contrasenia director.contrasenia%TYPE
+) AS $$
+DECLARE 
+    _rutAux character varying(12);      
+
+BEGIN
+
+    _rutAux :=  _cedula;
+    _rutAux := replace(_rutAux::text, '.','');
+    _rutAux := replace(_rutAux::text, '-','');    
+
+
+    IF email_valido(_email) = false THEN
+        RAISE EXCEPTION 'El email no es valido';
+    END IF;
+
+    IF valida_rut(_rutAux) AND email_valido(_email) THEN
+
+        INSERT INTO director(cedula, nombre_completo, email, contrasenia) 
+		VALUES (UPPER(_rutAux), UPPER(_nombre_completo), UPPER(_email), MD5(_contrasenia) );
+		RAISE NOTICE 'El director fue registrado correctamente';    
+
+    END IF;	
+END;
+$$ LANGUAGE plpgsql;
+
+
+
 CREATE OR REPLACE PROCEDURE agregar_docente(
 	_cedula docente.cedula%TYPE,
 	_nombre_completo docente.nombre_completo%TYPE,

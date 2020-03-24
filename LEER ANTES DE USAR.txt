@@ -1,5 +1,5 @@
-- La DB está en postgres y se adjunta el backup de la DB para que no tenga que rellenar la DB con datos
-- Si desea rellenar la DB desde cero, entonces debe crear primero un estado, administrador y profesor para
+- La DB está en postgres y para rellenar la DB debe ejecutar los comandos agregados en "datos variados.sql".
+- Para rellenar la DB desde cero, entonces debe crear primero un estado, administrador y profesor para
 poder acceder a través del login
 - El administrador principal a usar es rut 190167771 y clave 123
 - El profesor principal a usar es 118885333 y su clave es 123
@@ -7,7 +7,7 @@ poder acceder a través del login
 - OJO, todas las claves son 123 por el momento
 
 
-- Después de montar el backup de la DB, copie la carpeta sga en codeigniter y 
+- Después de crear la DB, copie la carpeta sga en codeigniter y 
 modifique application->confi->database.php para poder conectarse a la DB en pgadmin
 
 

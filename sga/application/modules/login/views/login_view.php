@@ -14,8 +14,8 @@
 	<br>
 	<form method="post" action="<?=base_url()?>index.php/login/ingresar">
 	  <div class="form-group">
-	    <label for="nombre_usuario">Cédula</label>
-	    <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Nombre de usuario">
+	    <label for="nombre_usuario">Email</label>
+	    <input type="email" class="form-control" id="email_usuario" name="email_usuario" placeholder="Email del usuario">
 	  </div>
 	  <div class="form-group">
 	    <label for="contrasena">Contraseña</label>

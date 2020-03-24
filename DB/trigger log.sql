@@ -26,6 +26,10 @@ CREATE TRIGGER agregar_log_administrador
 AFTER INSERT OR UPDATE OR DELETE ON administrador
 FOR EACH ROW EXECUTE FUNCTION proceso_agregar_log();
 
+CREATE TRIGGER agregar_log_director
+AFTER INSERT OR UPDATE OR DELETE ON director
+FOR EACH ROW EXECUTE FUNCTION proceso_agregar_log();
+
 CREATE TRIGGER agregar_log_docente
 AFTER INSERT OR UPDATE OR DELETE ON docente
 FOR EACH ROW EXECUTE FUNCTION proceso_agregar_log();

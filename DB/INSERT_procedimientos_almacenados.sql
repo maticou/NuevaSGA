@@ -181,6 +181,16 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE PROCEDURE agregar_periodo(
+	_tipo tipo_periodo.tipo%TYPE
+) AS $$
+BEGIN
+	INSERT INTO tipo_periodo(tipo) 
+	VALUES (UPPER(_tipo));
+	RAISE NOTICE 'El periodo fue registrado correctamente';    
+END;
+$$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE PROCEDURE agregar_instancia_curso(
 	_periodo instancia_curso.periodo%TYPE,
@@ -189,10 +199,23 @@ CREATE OR REPLACE PROCEDURE agregar_instancia_curso(
 	_curso instancia_curso.curso%TYPE,
 	_docente instancia_curso.docente%TYPE
 ) AS $$
+DECLARE
+	existe integer default 0;
 BEGIN
-	INSERT INTO instancia_curso(periodo,seccion,anio,curso,docente) 
-	VALUES (_periodo,UPPER(_seccion),_anio,_curso,UPPER(_docente));
-	RAISE NOTICE 'La instancia curso fue registrada correctamente';    	   
+	SELECT COUNT(instancia_curso.id)
+	FROM instancia_curso
+	WHERE instancia_curso.seccion=UPPER(_seccion)
+	AND instancia_curso.periodo=_periodo
+	AND instancia_curso.anio=_anio
+	AND instancia_curso.curso=_curso INTO existe;
+
+	IF (existe = 0) THEN
+		INSERT INTO instancia_curso(periodo,seccion,anio,curso,docente) 
+		VALUES (_periodo,UPPER(_seccion),_anio,_curso,UPPER(_docente));
+		RAISE NOTICE 'La instancia curso fue registrada correctamente';		
+	ELSE
+		RAISE NOTICE 'La instancia del curso ya existe';
+	END IF;	    	   
 END;
 $$ LANGUAGE plpgsql;
 

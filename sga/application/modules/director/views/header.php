@@ -8,16 +8,13 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item">
-	        <a class="nav-link" href="">Alumnos <span class="sr-only">(current)</span></a>
+	        <a class="nav-link" href="<?=base_url()?>index.php/director/index">Cursos <span class="sr-only">(current)</span></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="">Cursos</a>
+	        <a class="nav-link" href="#">Reportes </a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="">Docentes</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="<?=base_url()?>index.php/login/cerrarSesion">Salir</a>
+	        <a class="nav-link" href="<?=base_url()?>index.php/login/cerrarSesion">Salir </a>
 	      </li>
 	    </ul>
 	  </div>

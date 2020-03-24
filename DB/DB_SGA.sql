@@ -18,6 +18,23 @@ CREATE TABLE administrador(
         ON DELETE NO ACTION
 );
 
+
+CREATE TABLE director(
+    cedula character varying(9) NOT NULL,
+    nombre_completo character varying(100) NOT NULL,
+    email character varying(50) UNIQUE NOT NULL,
+    contrasenia character varying(50) NOT NULL,
+    estado integer DEFAULT 1 NOT NULL,
+    
+    CONSTRAINT cedula_director_pkey PRIMARY KEY (cedula),
+
+    CONSTRAINT estado FOREIGN KEY (estado)
+    REFERENCES tipo_estado(id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+
 CREATE TABLE docente(
     cedula character varying(9) NOT NULL,
     nombre_completo character varying(100) NOT NULL,
@@ -95,6 +112,11 @@ CREATE TABLE curso(
     nombre character varying(50) UNIQUE NOT NULL
 );
 
+CREATE TABLE tipo_periodo(
+    id SERIAL PRIMARY KEY, 
+    tipo character varying(20) UNIQUE NOT NULL -- Otoño-Invierno|Primavera-Verano
+);
+
 CREATE TABLE instancia_curso(
     id SERIAL PRIMARY KEY,
     periodo integer NOT NULL,
@@ -111,6 +133,11 @@ CREATE TABLE instancia_curso(
 
     CONSTRAINT docente FOREIGN KEY (docente)
     REFERENCES docente(cedula) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+
+    CONSTRAINT periodo FOREIGN KEY (periodo)
+    REFERENCES tipo_periodo(id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );

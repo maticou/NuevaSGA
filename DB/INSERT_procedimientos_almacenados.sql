@@ -43,6 +43,38 @@ $$ LANGUAGE plpgsql;
 
 
 
+CREATE OR REPLACE PROCEDURE agregar_director(
+	_cedula director.cedula%TYPE,
+	_nombre_completo director.nombre_completo%TYPE,
+	_email director.email%TYPE,
+	_contrasenia director.contrasenia%TYPE
+) AS $$
+DECLARE 
+    _rutAux character varying(12);      
+
+BEGIN
+
+    _rutAux :=  _cedula;
+    _rutAux := replace(_rutAux::text, '.','');
+    _rutAux := replace(_rutAux::text, '-','');    
+
+
+    IF email_valido(_email) = false THEN
+        RAISE EXCEPTION 'El email no es valido';
+    END IF;
+
+    IF valida_rut(_rutAux) AND email_valido(_email) THEN
+
+        INSERT INTO director(cedula, nombre_completo, email, contrasenia) 
+		VALUES (UPPER(_rutAux), UPPER(_nombre_completo), UPPER(_email), MD5(_contrasenia) );
+		RAISE NOTICE 'El director fue registrado correctamente';    
+
+    END IF;	
+END;
+$$ LANGUAGE plpgsql;
+
+
+
 CREATE OR REPLACE PROCEDURE agregar_docente(
 	_cedula docente.cedula%TYPE,
 	_nombre_completo docente.nombre_completo%TYPE,
@@ -149,6 +181,16 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE PROCEDURE agregar_periodo(
+	_tipo tipo_periodo.tipo%TYPE
+) AS $$
+BEGIN
+	INSERT INTO tipo_periodo(tipo) 
+	VALUES (UPPER(_tipo));
+	RAISE NOTICE 'El periodo fue registrado correctamente';    
+END;
+$$ LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE PROCEDURE agregar_instancia_curso(
 	_periodo instancia_curso.periodo%TYPE,
@@ -157,10 +199,23 @@ CREATE OR REPLACE PROCEDURE agregar_instancia_curso(
 	_curso instancia_curso.curso%TYPE,
 	_docente instancia_curso.docente%TYPE
 ) AS $$
+DECLARE
+	existe integer default 0;
 BEGIN
-	INSERT INTO instancia_curso(periodo,seccion,anio,curso,docente) 
-	VALUES (_periodo,UPPER(_seccion),_anio,_curso,UPPER(_docente));
-	RAISE NOTICE 'La instancia curso fue registrada correctamente';    	   
+	SELECT COUNT(instancia_curso.id)
+	FROM instancia_curso
+	WHERE instancia_curso.seccion=UPPER(_seccion)
+	AND instancia_curso.periodo=_periodo
+	AND instancia_curso.anio=_anio
+	AND instancia_curso.curso=_curso INTO existe;
+
+	IF (existe = 0) THEN
+		INSERT INTO instancia_curso(periodo,seccion,anio,curso,docente) 
+		VALUES (_periodo,UPPER(_seccion),_anio,_curso,UPPER(_docente));
+		RAISE NOTICE 'La instancia curso fue registrada correctamente';		
+	ELSE
+		RAISE NOTICE 'La instancia del curso ya existe';
+	END IF;	    	   
 END;
 $$ LANGUAGE plpgsql;
 

@@ -36,6 +36,6 @@ BEGIN
 	alumno_instancia_curso.situacion AS situacion
 	FROM alumno, alumno_instancia_curso
 	WHERE alumno_instancia_curso.instancia_curso = _id_instancia
-	AND alumno.num_matricula = alumno_instancia_curso.alumno;
+	AND alumno_instancia_curso.alumno = alumno.num_matricula;
 END;
 $$ LANGUAGE plpgsql;

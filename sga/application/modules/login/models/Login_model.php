@@ -10,24 +10,34 @@ class Login_model extends CI_Model{
 		return false;
     }
     
-    function obtener_tipo_usuario($cedula){
+    function obtener_tipo_usuario($email){
         $query = "SELECT * FROM obtener_datos_usuario(?)";
         $this->db->limit(1);
-        $result = $this->db->query( $query, array('usuario'=>$cedula))->result();
+        $result = $this->db->query( $query, array('usuario'=>$email))->result();
         
         foreach ($result as $fila) {
 			return $fila->tipo;
 		}
     }
 
-    function obtener_nombre_usuario($cedula){
+    function obtener_nombre_usuario($email){
         $query = "SELECT * FROM obtener_datos_usuario(?)";
         $this->db->limit(1);
-        $result = $this->db->query( $query, array('usuario'=>$cedula))->result();
+        $result = $this->db->query( $query, array('usuario'=>$email))->result();
         
         foreach ($result as $fila) {
 			return $fila->nombre;
 		}
+    }
+
+    function obtener_cedula_usuario($email){
+        $query = "SELECT * FROM obtener_datos_usuario(?)";
+        $this->db->limit(1);
+        $result = $this->db->query( $query, array('usuario'=>$email))->result();
+        
+        foreach ($result as $fila) {
+            return $fila->cedula;
+        }
     }
 }
 ?>

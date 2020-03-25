@@ -75,6 +75,12 @@
 			$this->load->view('alumnos_instancias_curso_view',$data);
 		}
 
+		public function reportePromedioNotasCurso(){		
+			$data['resultadoPromedios'] = $this->Director_model->cargarPromedios();			
+        	$this->load->view('header');
+			$this->load->view('reporte_promedio_notas_curso_view',$data);
+		}
+
 	}
 
 ?>

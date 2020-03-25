@@ -68,6 +68,11 @@ class Director_model extends CI_Model{
         }
         return FALSE;
     }
+
+    function cargarPromedios(){
+        $query = $this->db->query('SELECT * FROM promedio_de_notas_por_curso()');
+        return $query->result_array();
+    }
 	
 }
 ?>

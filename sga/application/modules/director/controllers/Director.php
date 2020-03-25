@@ -44,6 +44,43 @@
 			$this->load->view('director_instancias_curso_view',$data);
 		}
 
+		public function alumnosInscritos(){
+			$id_instancia = $this->input->post('id_instancia');
+			$data['alumnos'] = $this->Director_model->cargar_alumnos_curso($id_instancia);
+			$data['cursoID'] = $id_instancia;
+			$this->load->view('header');
+			$this->load->view('alumnos_instancias_curso_view',$data);
+		}
+
+		public function agregarAlumno(){
+			$id_instancia = $this->input->post('id_instancia');
+			$data['alumnosNo'] = $this->Director_model->cargar_alumnos_no_inscritos($id_instancia);
+			$data['situacion'] = $this->Director_model->obtener_situacion();
+			$data['cursoID'] = $id_instancia;
+			$this->load->view('header');
+			$this->load->view('inscribir_alumno_view',$data);			
+		}
+
+		public function guardarNuevoAlumno(){
+			$curso = $this->input->post('id_curso');
+			$matricula = $this->input->post('alumnosNo');
+			$nota = 0;
+			$situacion = $this->input->post('situacion');			
+
+			$registro = $this->Director_model->registrar_alumno_curso($curso, $matricula, $nota, $situacion);
+
+			$data['alumnos'] = $this->Director_model->cargar_alumnos_curso($curso);
+			$data['cursoID'] = $curso;
+			$this->load->view('header');
+			$this->load->view('alumnos_instancias_curso_view',$data);
+		}
+
+		public function reportePromedioNotasCurso(){		
+			$data['resultadoPromedios'] = $this->Director_model->cargarPromedios();			
+        	$this->load->view('header');
+			$this->load->view('reporte_promedio_notas_curso_view',$data);
+		}
+
 	}
 
 ?>

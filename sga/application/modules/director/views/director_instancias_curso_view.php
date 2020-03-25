@@ -19,6 +19,7 @@
 		  <th> <font face="Arial">Año</font> </th> 
 		  <th> <font face="Arial">Docente</font> </th> 
 		  <th> <font face="Arial">Porcentaje restante</font> </th> 
+		  <th> <font face="Arial">Acción</font> </th> 
 		</tr>
 		<?foreach($resultadoCursoInstancias as $row):?>
 			<tr>
@@ -40,6 +41,12 @@
 				<td><input type="hidden"  value="<?=$row->porcentaje_restante?>" readonly>
 					<p><?=$row->porcentaje_restante?></p>
 				</td>
+				<td>
+			        <form method="post" action="<?=base_url()?>index.php/director/alumnosInscritos">
+			          <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id?>">
+			          <button type="submit" class="btn btn-primary">Ver alumno</button>
+			        </form>
+			    </td>
 			</tr>
 		<?endforeach;?>
 	</table>	

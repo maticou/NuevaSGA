@@ -10,8 +10,17 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?=base_url()?>index.php/director/index">Cursos <span class="sr-only">(current)</span></a>
 	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Reportes </a>
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Reportes
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reportePromedioNotasCurso">Promedio de notas por curso</a>
+	          <a class="dropdown-item" href="#">Docentes con notas al día</a>
+	          <a class="dropdown-item" href="#">Docentes con notas atrasadas</a>
+	          <a class="dropdown-item" href="#">Listado de cursos con situación de los estudiantes</a>
+	          <a class="dropdown-item" href="#">Reporte de notas y situación final por docente</a>
+	        </div>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="<?=base_url()?>index.php/login/cerrarSesion">Salir </a>

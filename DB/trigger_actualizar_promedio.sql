@@ -13,7 +13,7 @@ BEGIN
 	AND alumno_instancia_curso.instancia_curso = OLD.instancia_curso 
 	INTO _id_curso;
 
-	IF ((SELECT cursor_verificar_porcentaje_completo(_id_curso)) = 1) THEN
+	IF ((SELECT cursor_verificar_porcentaje(_id_curso)) = 1) THEN
 		SELECT nota_final
 		FROM alumno_instancia_curso
 		WHERE alumno_instancia_curso.alumno = OLD.alumno

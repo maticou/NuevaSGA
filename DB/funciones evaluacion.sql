@@ -55,7 +55,7 @@ BEGIN
 	AND unidad_aprendizaje.id = evaluacion.unidad
 	AND tipo_evaluacion.id = evaluacion.tipo_evaluacion;
 END;
-$$ LANGUAGE 
+$$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION actualizar_promedio() 
 RETURNS trigger AS $$

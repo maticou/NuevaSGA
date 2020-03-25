@@ -60,11 +60,17 @@
       <td>
         <form method="post" action="<?=base_url()?>index.php/evaluacion/subir_nota">
           <div class="container">
-            <input type="hidden" class="form-control" id="id_evaluacion" name="id_evaluacion" value="<?=$row->id_evaluacion?>">
-            <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
-            <input type="hidden" class="form-control" id="matricula" name="matricula" value="<?=$matricula?>">
-            <input type="text" class="form-control" id="nota" name="nota">
-            <button type="submit" class="btn btn-primary">Subir nota</button>
+            <div class="row">
+              <div class="col-sm">
+                <input type="hidden" class="form-control" id="id_evaluacion" name="id_evaluacion" value="<?=$row->id_evaluacion?>">
+                <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
+                <input type="hidden" class="form-control" id="matricula" name="matricula" value="<?=$matricula?>">
+                <input type="text" class="form-control" id="nota" name="nota">
+              </div>
+              <div class="col-sm">
+                <button type="submit" class="btn btn-primary">Subir nota</button>
+              </div>
+            </div>
           </div>
         </form>
       </td>

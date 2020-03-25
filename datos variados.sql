@@ -28,3 +28,11 @@ call agregar_instancia_curso(1,'a',2020,1,'118885333');
 call agregar_instancia_curso(1,'b',2020,1,'118885333');
 
 call agregar_alumno_instancia_curso(1,2013407015,0,3);
+
+CALL agregar_unidad_aprendizaje('Unidad 1');
+CALL agregar_unidad_aprendizaje('Unidad 2');
+CALL agregar_unidad_aprendizaje('Unidad 3');
+
+CALL agregar_tipo_evaluacion('Prueba');
+CALL agregar_tipo_evaluacion('Laboratorio');
+CALL agregar_tipo_evaluacion('Informe');

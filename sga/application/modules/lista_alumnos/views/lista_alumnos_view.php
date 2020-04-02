@@ -1,4 +1,14 @@
 <br>
+
+<div class="container">
+	<form method="post" action="<?=base_url()?>index.php/lista_alumnos/cerrar_semestre">
+	<input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
+	<button type="submit" style="margin-left: 10px;" class="btn btn-primary">Cerrar Semestre</button>
+	</form>
+</div>
+
+<br>
+
 <div id="listado" class="container-fluid" align="center">
 
 	<table class="table table-striped"  border="0" cellspacing="5" cellpadding="5">

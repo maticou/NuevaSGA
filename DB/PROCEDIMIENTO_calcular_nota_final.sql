@@ -28,20 +28,20 @@ BEGIN
 					id_alumno,id_instancia_curso) INTO valor_verificar_situacion;
 				IF (valor_verificar_situacion = 1) THEN
 					UPDATE alumno_instancia_curso
-					SET nota_final=39, situacion=3
+					SET nota_final=39, situacion=2
 					WHERE alumno_instancia_curso.alumno=id_alumno 
 					AND alumno_instancia_curso.instancia_curso=id_instancia_curso;
 					RAISE NOTICE 'Alumno reprobado porque una evaluación exigible tiene nota menor a 40, se le modifica el promedio a nota 39';
 				ELSE
-					UPDATE matricula
-					SET nota_final=promedio_final, situacion=2
+					UPDATE alumno_instancia_curso
+					SET nota_final=promedio_final, situacion=1
 					WHERE alumno_instancia_curso.alumno=id_alumno 
 					AND alumno_instancia_curso.instancia_curso=id_instancia_curso;
 					RAISE NOTICE 'Alumno aprobado con nota %', promedio_final;
 				END IF;
 			ELSE
-				UPDATE matricula
-				SET nota_final=promedio_final, situacion='REPROBADO'
+				UPDATE alumno_instancia_curso
+				SET nota_final=promedio_final, situacion=2
 				WHERE alumno_instancia_curso.alumno=id_alumno 
 				AND alumno_instancia_curso.instancia_curso=id_instancia_curso;
 				RAISE NOTICE 'Alumno reprobado con promedio %', promedio_final;

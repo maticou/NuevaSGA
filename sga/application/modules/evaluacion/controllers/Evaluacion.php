@@ -32,7 +32,7 @@
 			$data['resultado'] = $this->Evaluacion_model->obtener_evaluaciones_alumno($matricula, $id_instancia);
 			$data['matricula'] = $matricula;
 			$data['id_instancia'] = $id_instancia;
-      $this->load->view("header");
+      		$this->load->view("header");
 			$this->load->view("evaluaciones_alumno_view",$data);
         }
 

@@ -17,7 +17,7 @@ class Evaluacion_model extends CI_Model{
             'unidad'=>intval($unidad),
             'tipo_evaluacion'=>intval($tipo),
             'prorroga'=>$prorroga,
-            'id_instancia'=>$id_instancia
+            'id_instancia'=>intval($id_instancia)
             ))->result();
 
         return $result;
@@ -42,6 +42,14 @@ class Evaluacion_model extends CI_Model{
         $result = $this->db->query( $query, array('matricula'=>$matricula, 'id_instancia'=>$id_instancia))->result();
 
         return $result;
+    }
+
+    public function subir_nota($id_evaluacion, $nota){
+        $query = "CALL modificar_nota(?,?)";
+        $result = $this->db->query( $query, array(
+            'nota'=>intval($nota),
+            'id_evaluacion'=>intval($id_evaluacion)
+            ))->result();
     }
 }
 ?>

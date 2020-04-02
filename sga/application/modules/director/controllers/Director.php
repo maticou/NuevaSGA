@@ -93,10 +93,16 @@
 			$this->load->view('reporte_docentes_con_notas_atrasadas_view',$data);
 		}
 
-		public function reporteCurosSituacionAlumnos(){		
+		public function reporteCursosSituacionAlumnos(){		
 			$data['resultadoCursos'] = $this->Director_model->cargarCurosSituacionAlumnos();			
         	$this->load->view('header');
 			$this->load->view('reporte_cursos_situacion_alumnos_view',$data);
+		}
+
+		public function reporteNotasDocenteSituacion(){		
+			$data['resultadoNotas'] = $this->Director_model->cargarNotasDocenteSituacion();			
+        	$this->load->view('header');
+			$this->load->view('reporte_notas_situacion_docente_view',$data);
 		}
 
 	}

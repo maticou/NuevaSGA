@@ -18,8 +18,8 @@
 	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reportePromedioNotasCurso">Promedio de notas por curso</a>
 	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reporteDocentesAlDia">Docentes con notas al día</a>
 	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reporteDocentesAtrasados">Docentes con notas atrasadas</a>
-	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reporteCurosSituacionAlumnos">Listado de cursos con situación de los estudiantes</a>
-	          <a class="dropdown-item" href="#">Reporte de notas y situación final por docente</a>
+	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reporteCursosSituacionAlumnos">Listado de cursos con situación de los estudiantes</a>
+	          <a class="dropdown-item" href="<?=base_url()?>index.php/director/reporteNotasDocenteSituacion">Reporte de notas y situación final por docente</a>
 	        </div>
 	      </li>
 	      <li class="nav-item">

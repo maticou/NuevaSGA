@@ -22,7 +22,7 @@ CALL agregar_curso('gestión de base de datos');
 
 CALL agregar_director('9834134K','ruth maria beatriz garrido orrego','rgarrido@utalca.cl','123');
 
-CALL agregar_periodo('otroño-invierno');
+CALL agregar_periodo('otoño-invierno');
 CALL agregar_periodo('primavera-verano');
 
 CALL agregar_instancia_curso(1,'a',2020,1,'118885333');

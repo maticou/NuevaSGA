@@ -100,3 +100,43 @@ BEGIN
 	ORDER BY curso ASC, anio ASC, seccion ASC;
 END;
 $$ LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION promedio_de_notas_por_docente(
+	) RETURNS TABLE (
+		cedula docente.cedula%TYPE,
+		docente docente.nombre_completo%TYPE,
+		curso curso.nombre%TYPE,
+		seccion instancia_curso.seccion%TYPE,
+		anio instancia_curso.anio%TYPE,
+		periodo tipo_periodo.tipo%TYPE,
+		alumno alumno.num_matricula%TYPE,
+		promedio_nota_final DECIMAL(10,0),
+		situacion situacion_alumno_instancia_curso.situacion%TYPE
+	) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT docente.cedula AS cedula,
+	docente.nombre_completo AS docente,
+	curso.nombre AS curso,
+	instancia_curso.seccion AS seccion,
+	instancia_curso.anio AS anio,
+	tipo_periodo.tipo AS periodo,
+	alumno.num_matricula AS alumno,
+	CAST(AVG(instancia_evaluacion.nota) AS DECIMAL(10,0)) AS promedio_nota_final,
+	situacion_alumno_instancia_curso.situacion AS situacion
+	FROM alumno, curso, instancia_curso, alumno_instancia_curso, tipo_periodo, docente, situacion_alumno_instancia_curso, instancia_evaluacion, evaluacion
+	WHERE alumno.num_matricula=alumno_instancia_curso.alumno
+	AND alumno_instancia_curso.instancia_curso=instancia_curso.id
+	AND instancia_curso.curso=curso.id
+	AND tipo_periodo.id=instancia_curso.periodo
+	AND docente.cedula=instancia_curso.docente
+	AND situacion_alumno_instancia_curso.id=alumno_instancia_curso.situacion
+	AND instancia_evaluacion.alumno=alumno.num_matricula
+	AND instancia_evaluacion.evaluacion=evaluacion.id
+	AND evaluacion.instancia_curso=instancia_curso.id
+	GROUP BY docente.cedula, docente.nombre_completo, instancia_curso.id, alumno.num_matricula, curso.nombre, alumno_instancia_curso.nota_final, tipo_periodo.tipo, situacion_alumno_instancia_curso.situacion
+	ORDER BY promedio_nota_final ASC, docente ASC, seccion ASC;
+END;
+$$ LANGUAGE plpgsql;

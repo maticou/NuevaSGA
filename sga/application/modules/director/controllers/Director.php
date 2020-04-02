@@ -81,6 +81,24 @@
 			$this->load->view('reporte_promedio_notas_curso_view',$data);
 		}
 
+		public function reporteDocentesAlDia(){		
+			$data['resultadoCursos'] = $this->Director_model->cargarDocentesAlDia();			
+        	$this->load->view('header');
+			$this->load->view('reporte_docentes_con_notas_al_dia_view',$data);
+		}
+
+		public function reporteDocentesAtrasados(){		
+			$data['resultadoCursos'] = $this->Director_model->cargarDocentesAtrasados();			
+        	$this->load->view('header');
+			$this->load->view('reporte_docentes_con_notas_atrasadas_view',$data);
+		}
+
+		public function reporteCurosSituacionAlumnos(){		
+			$data['resultadoCursos'] = $this->Director_model->cargarCurosSituacionAlumnos();			
+        	$this->load->view('header');
+			$this->load->view('reporte_cursos_situacion_alumnos_view',$data);
+		}
+
 	}
 
 ?>

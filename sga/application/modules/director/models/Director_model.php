@@ -73,6 +73,21 @@ class Director_model extends CI_Model{
         $query = $this->db->query('SELECT * FROM promedio_de_notas_por_curso()');
         return $query->result_array();
     }
+
+    function cargarDocentesAlDia(){
+        $query = $this->db->query('SELECT * FROM docentes_con_notas_al_dia()');
+        return $query->result_array();
+    }
+
+    function cargarDocentesAtrasados(){
+        $query = $this->db->query('SELECT * FROM docentes_con_notas_atrasadas()');
+        return $query->result_array();
+    }
+
+    function cargarCurosSituacionAlumnos(){
+        $query = $this->db->query('SELECT * FROM cursos_con_situacion_alumnos()');
+        return $query->result_array();
+    }
 	
 }
 ?>

@@ -261,7 +261,7 @@ CREATE TABLE historial_reporte_curso(
 
 CREATE TABLE tipo_evaluacion(
     id SERIAL PRIMARY KEY, 
-    tipo character varying(20) UNIQUE NOT NULL -- PRUEBA|PROYECTO|LABORATORIO|TAREA|TRABAJOS|INFORME
+    tipo character varying(20) UNIQUE NOT NULL -- PRUEBA|PROYECTO|LABORATORIO|TAREA|TRABAJO|INFORME|ENTREGABLE
 );
 
 CREATE TABLE unidad_aprendizaje(

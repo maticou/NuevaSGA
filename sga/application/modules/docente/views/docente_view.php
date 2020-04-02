@@ -1,7 +1,7 @@
 <br>
-<div id="listado" class="container">
+<div id="listado" class="container-fluid" align="center">
 
-	<table class="table table-striped">
+	<table class="table table-striped"  border="0" cellspacing="5" cellpadding="5">
 	<th>Nombre Curso</th>
 	<th>Sección</th>
     <th>Año</th>

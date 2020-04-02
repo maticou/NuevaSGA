@@ -1,3 +1,4 @@
+
 CALL agregar_estado('activo');
 CALL agregar_estado('inactivo');
 

@@ -29,8 +29,24 @@
 				<p><?=$row->situacion?></p>
             </td>
             <td>
-                <button class="btn btn-primary" onclick="ver_evaluaciones(<?=$row->matricula?>)">Evaluaciones</button>
-                <button class="btn btn-primary" onclick="ver_observaciones(<?=$row->matricula?>)">Observaciones</button>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm">
+							<form method="post" action="<?=base_url()?>index.php/evaluacion/cargar_evaluaciones_alumno">
+								<input type="hidden" class="form-control" id="matricula" name="matricula" value="<?=$row->matricula?>">
+								<input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
+								<button type="submit" class="btn btn-primary">Evaluaciones</button>
+							</form>
+						</div>
+
+						<div class="col-sm">
+							<form method="post" action="<?=base_url()?>index.php/historial_alumno/ver_historial">
+								<input type="hidden" class="form-control" id="matricula" name="matricula" value="<?=$row->matricula?>">
+								<button type="submit" class="btn btn-primary">Historial</button>
+							</form>
+						</div>
+					</div>
+				</div>
             </td>
 		</tr>
 	<?endforeach;?>

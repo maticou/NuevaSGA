@@ -29,6 +29,12 @@ class Lista_alumnos_model extends CI_Model{
             return TRUE;
         }
         return FALSE;
+
+    public function cerrar_semestre($id_instancia){
+        $query = "CALL cerrar_semestre(?)";
+        $data = array('id_instancia' => $id_instancia);
+        $result = $this->db->query($query, $data);
+
     }
 }
 ?>

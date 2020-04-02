@@ -1,3 +1,15 @@
+<div id="agregarInstanciaCurso" class="container-fluid" align="center">
+  <form method="post" action="<?=base_url()?>index.php/docente/agregarInstanciaCurso">
+    <div class="row">
+      <div class="col-sm">
+        <div class="col-sm">
+          <input type="hidden" class="form-control" id="cedula" name="cedula" value="<?=$cedula?>">
+          <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Dictar curso</button>        
+        </div>
+    </div>                   
+  </form>
+</div>
+
 <br>
 <div id="listado" class="container-fluid" align="center">
 

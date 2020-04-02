@@ -1,3 +1,14 @@
+<div id="agregarAlumno" class="container-fluid" align="center">
+	<form method="post" action="<?=base_url()?>index.php/lista_alumnos/ingresarAlumnos">
+	  <div class="row">
+	    <div class="col-sm">
+		    <div class="col-sm">
+		      <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$id_instancia?>">
+    		  <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Agregar Alumno</button>	      
+		    </div>
+	  </div>	  	  	  	  	 
+	</form>
+</div>
 <br>
 <div id="listado" class="container-fluid" align="center">
 

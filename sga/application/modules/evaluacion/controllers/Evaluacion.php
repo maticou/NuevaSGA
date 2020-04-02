@@ -10,12 +10,27 @@
 
 		public function index(){
 			$this->load->view("evaluacion_view");
-        }
+		}
+		
+		public function subir_nota(){
+			$id_evaluacion = $this->input->post('id_evaluacion');
+			$matricula = $this->input->post('matricula');
+			$id_instancia = $this->input->post('id_instancia');
+			$nota = $this->input->post('nota');
+			$this->Evaluacion_model->subir_nota($id_evaluacion, $nota);
+
+			$data['resultado'] = $this->Evaluacion_model->obtener_evaluaciones_alumno($matricula, $id_instancia);
+			$data['matricula'] = $matricula;
+			$data['id_instancia'] = $id_instancia;
+			$this->load->view("evaluaciones_alumno_view",$data);
+		}
         
         public function cargar_evaluaciones_alumno(){
             $matricula = $this->input->post('matricula');
             $id_instancia = $this->input->post('id_instancia');
 			$data['resultado'] = $this->Evaluacion_model->obtener_evaluaciones_alumno($matricula, $id_instancia);
+			$data['matricula'] = $matricula;
+			$data['id_instancia'] = $id_instancia;
 			$this->load->view("evaluaciones_alumno_view",$data);
         }
 

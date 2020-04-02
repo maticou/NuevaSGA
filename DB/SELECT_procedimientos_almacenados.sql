@@ -162,3 +162,28 @@ BEGIN
 	AND tipo_periodo.id=instancia_curso.periodo;
 END;
 $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION obtener_datos_alumno_no_inscritos_en_instancia_curso(
+	IN _instancia_curso instancia_curso.id%TYPE
+) RETURNS TABLE (
+		num_matricula alumno.num_matricula%TYPE,
+		nombre alumno.nombre_completo%TYPE,
+		estado alumno.estado%TYPE
+	) AS $$
+BEGIN
+	RETURN QUERY
+	SELECT alumno.num_matricula AS num_matricula,
+	alumno.nombre_completo AS nombre,
+	alumno.estado AS estado	
+	FROM alumno
+	WHERE alumno.estado=1
+	EXCEPT
+	SELECT alumno.num_matricula AS num_matricula,
+	alumno.nombre_completo AS nombre,
+	alumno.estado AS estado	
+	FROM alumno, alumno_instancia_curso
+	WHERE alumno_instancia_curso.instancia_curso=_instancia_curso
+	AND alumno.num_matricula = alumno_instancia_curso.alumno;
+END;
+$$ LANGUAGE 'plpgsql';

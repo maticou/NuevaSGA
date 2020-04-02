@@ -62,3 +62,25 @@ BEGIN
 	AND situacion_alumno_instancia_curso.id = alumno_instancia_curso.situacion;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE PROCEDURE cerrar_semestre(
+	_id_instancia instancia_curso.id%TYPE
+) AS $$
+DECLARE
+	cursor_alumnos CURSOR FOR SELECT alumno.num_matricula AS matricula
+		FROM alumno, alumno_instancia_curso, situacion_alumno_instancia_curso
+		WHERE alumno_instancia_curso.instancia_curso = _id_instancia
+		AND alumno_instancia_curso.alumno = alumno.num_matricula
+		AND situacion_alumno_instancia_curso.id = alumno_instancia_curso.situacion;
+
+	matricula RECORD;
+BEGIN
+	OPEN cursor_alumnos;
+	FETCH cursor_alumnos INTO matricula;
+
+	WHILE (FOUND) LOOP
+		CALL calcular_nota_final(matricula.matricula, _id_instancia);
+		FETCH cursor_alumnos INTO matricula;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql;

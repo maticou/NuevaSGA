@@ -6,5 +6,11 @@ class Lista_alumnos_model extends CI_Model{
 
         return $result;
     }
+
+    public function cerrar_semestre($id_instancia){
+        $query = "CALL cerrar_semestre(?)";
+        $data = array('id_instancia' => $id_instancia);
+        $result = $this->db->query($query, $data);
+    }
 }
 ?>

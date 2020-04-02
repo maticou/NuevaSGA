@@ -28,8 +28,8 @@ DECLARE
 	cursor_promedio CURSOR FOR SELECT nota, exigible
 								FROM instancia_evaluacion, evaluacion
 								WHERE alumno=_alumno
-								AND instancia_evaluacion.instancia_curso=_instancia_curso
-								AND evaluacion=evaluacion.id;
+								AND evaluacion.instancia_curso=_instancia_curso
+								AND instancia_evaluacion.evaluacion=evaluacion.id;
 	valor RECORD;
 BEGIN 
 	OPEN cursor_promedio;	

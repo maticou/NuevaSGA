@@ -46,6 +46,20 @@
                 <button type="submit" style="margin-left: 10px;" class="btn btn-primary">Evaluaciones</button>
               </form>
             </div>
+
+            <div>
+              <form method="post" action="<?=base_url()?>index.php/docente/ayudantes">
+                <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
+                <button type="submit" style="margin-left: 10px;" class="btn btn-primary">Ayudantes</button>
+              </form>
+            </div>
+
+            <div>
+              <form method="post" action="<?=base_url()?>index.php/docente/docenteInvitado">
+                <input type="hidden" class="form-control" id="id_instancia" name="id_instancia" value="<?=$row->id_instancia?>">
+                <button type="submit" style="margin-left: 10px;" class="btn btn-primary">Docente invitado</button>
+              </form>
+            </div>
           </div>
         </div>
       </td>

@@ -3,6 +3,7 @@ CALL agregar_estado('activo');
 CALL agregar_estado('inactivo');
 
 CALL agregar_administrador('19016777-1','matías sebastián parra soto','mparra13@alumnos.utalca.cl','123');
+CALL agregar_administrador('6450986-1','super usuario hiper administrador','admin@utalca.cl','123');
 
 CALL agregar_alumno(2013407015,'manuel nicolás gonzález guerrero','mgonzalez13@alumnos.utalca.cl','123');
 CALL agregar_alumno(2013407010,'katherine roxana astudillo ibarra','kastudillo13@alumnos.utalca.cl','123');
@@ -16,9 +17,18 @@ CALL agregar_situacion_alumno_instancia_curso('cursando');
 
 CALL agregar_docente('11888533-3','José nicolás castro ibarra','jcastro@utalca.cl','123');
 CALL agregar_docente('9506990-8','macarena camila ibarra pinto','mibarra@utalca.cl','123');
+CALL agregar_docente('8061342-3','TULIO SEGUNDO TRIVIÑO TUFILLO','TTRIVINIO@UTALCA.CL','123');
+CALL agregar_docente('12122737-1','margarita aguirre pereira cabrera','mpereira@utalca.cl','123');
 
 CALL agregar_curso('física');
 CALL agregar_curso('gestión de base de datos');
+CALL agregar_curso('diseño de base de datos');
+CALL agregar_curso('proyecto de programación');
+CALL agregar_curso('electricidad y magnetismo');
+CALL agregar_curso('tecnologías web');
+CALL agregar_curso('seguridad informática');
+CALL agregar_curso('máquinas abstractas y lenguajes formales');
+CALL agregar_curso('administración de redes y sistemas computacionales');
 
 CALL agregar_director('9834134K','ruth maria beatriz garrido orrego','rgarrido@utalca.cl','123');
 

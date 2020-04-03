@@ -63,12 +63,3 @@ CALL agregar_tipo_evaluacion('trabajo');
 CALL agregar_tipo_evaluacion('informe');
 CALL agregar_tipo_evaluacion('entregable');
 
-CALL agregar_evaluacion('2020-03-25',25,TRUE,1,1,'',2);
-CALL agregar_evaluacion('2020-05-15',25,TRUE,2,1,'',2);
-CALL agregar_evaluacion('2020-06-15',50,TRUE,3,1,'',2);
-CALL agregar_evaluacion('2020-04-02',15,FALSE,1,3,'',4);
-CALL agregar_evaluacion('2020-04-01',35,TRUE,1,1,'',4);
-CALL agregar_evaluacion('2020-05-22',35,TRUE,1,2,'',4);
-CALL agregar_evaluacion('2020-05-16',15,FALSE,1,5,'',4);
-CALL agregar_evaluacion('2020-05-11',100,TRUE,1,2,'',5);
-CALL agregar_evaluacion('2020-03-22',20,TRUE,1,1,'',6);

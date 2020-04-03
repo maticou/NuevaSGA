@@ -1,8 +1,6 @@
-- La DB está en postgres y para rellenar la DB debe ejecutar los comandos agregados en "datos variados.sql".
-- Para rellenar la DB desde cero, entonces debe crear primero un estado, administrador y profesor para
-poder acceder a través del login
-- El administrador principal a usar es rut 190167771 y clave 123
-- El profesor principal a usar es 118885333 y su clave es 123
+- La DB está en postgres y para crearla, primero cree una DB con cualquier nombre y una vez creada agregue todas las instrucciones 
+que estan en "Toda la base de datos SIN los datos.sql" en una página ejecutable en blanco de pgadmin.
+- Para rellenar la DB debe ejecutar los comandos agregados en "datos variados.sql".
 
 - OJO, todas las claves son 123 por el momento
 

@@ -1,4 +1,13 @@
 <br>
+
+<div class="container">
+	<form method="post" action="<?=base_url()?>index.php/observacion/obtener_observaciones">
+	<input type="hidden" class="form-control" id="matricula" name="matricula" value="<?=$matricula?>">
+	<button type="submit" style="margin-left: 10px;" class="btn btn-primary">Ver Observaciones</button>
+	</form>
+</div>
+
+<br>
 <div id="listado" class="container">
 
 	<table class="table table-striped">

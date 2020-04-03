@@ -27,3 +27,18 @@ BEGIN
 	AND instancia_curso.periodo = tipo_periodo.id;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION obtener_observaciones_alumno(
+	_matricula alumno.num_matricula%TYPE
+) RETURNS TABLE(
+	nombre_profesor docente.nombre_completo%TYPE,
+	observacion observacion.observacion%TYPE
+)AS $$
+BEGIN
+	RETURN QUERY	
+	SELECT docente.nombre_completo, observacion.observacion 
+	FROM observacion, docente
+	WHERE observacion.alumno=_matricula
+	AND docente.cedula = observacion.docente;
+END;
+$$ LANGUAGE plpgsql;

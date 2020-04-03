@@ -38,6 +38,71 @@
 			$this->load->view("header");
 			$this->load->view("docente_view",$data);
 		}
+
+
+		public function ayudantes(){
+			$curso = $this->input->post('id_instancia');
+			$cedula = $this->session->userdata("cedula");
+			$data['cedula'] = $cedula;
+			$data['curso'] = $curso;
+			$data['resultado'] = $this->Docente_model->obtener_ayudantes($curso);
+			$this->load->view("header");
+			$this->load->view("ayudantes_view",$data);
+		}
+
+		public function docenteInvitado(){
+			$curso = $this->input->post('id_instancia');
+			$cedula = $this->session->userdata("cedula");
+			$data['cedula'] = $cedula;
+			$data['curso'] = $curso;
+			$data['resultado'] = $this->Docente_model->obtener_docentes_invitado($curso);
+			$this->load->view("header");
+			$this->load->view("docente_invitado_view",$data);
+		}
+
+		public function agregarAyudante(){
+			$curso = $this->input->post('curso');
+			$data['curso'] = $curso;
+			$data['alumnos'] = $this->Docente_model->obtener_alumnos_ayudantes($curso);
+			$this->load->view('header');
+			$this->load->view('agregar_ayudante_view',$data);
+		}
+
+		public function agregarDocente(){
+			$curso = $this->input->post('curso');
+			$data['curso'] = $curso;
+			$data['docentes'] = $this->Docente_model->obtener_docentes_ayudantes($curso);
+			$this->load->view('header');
+			$this->load->view('agregar_docente_view',$data);
+		}
+
+		public function guardarNuevoAyudante(){
+			$curso = $this->input->post('curso');
+			$alumno = $this->input->post('alumno');
+
+			$registro = $this->Docente_model->registrar_ayudante_invitado($curso, $alumno);
+
+			$cedula = $this->session->userdata("cedula");
+			$data['cedula'] = $cedula;
+			$data['curso'] = $curso;
+			$data['resultado'] = $this->Docente_model->obtener_ayudantes($curso);
+			$this->load->view("header");
+			$this->load->view("ayudantes_view",$data);
+		}
+
+
+		public function guardarNuevoDocenteInvitado(){
+			$curso = $this->input->post('curso');
+			$docente = $this->input->post('docente');
+
+			$registro = $this->Docente_model->registrar_docente_invitador($curso, $docente);
+			$cedula = $this->session->userdata("cedula");
+			$data['cedula'] = $cedula;
+			$data['curso'] = $curso;
+			$data['resultado'] = $this->Docente_model->obtener_docentes_invitado($curso);
+			$this->load->view("header");
+			$this->load->view("docente_invitado_view",$data);
+		}
 		
 	}
 

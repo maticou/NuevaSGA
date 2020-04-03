@@ -30,5 +30,55 @@ class Docente_model extends CI_Model{
         }
         return FALSE;
     }
+
+    public function obtener_ayudantes($curso){
+        $query = "SELECT * FROM obtener_datos_alumno_ayudante(?)";
+        $result = $this->db->query( $query, array('usuario'=>$curso))->result();
+
+        return $result;
+    } 
+
+
+    public function obtener_docentes_invitado($curso){
+        $query = "SELECT * FROM obtener_datos_docente_invitado(?)";
+        $result = $this->db->query( $query, array('usuario'=>$curso))->result();
+
+        return $result;
+    } 
+
+    public function obtener_alumnos_ayudantes($curso){
+        $query = "SELECT * FROM obtener_datos_alumno_ayudante_no_curso(?)";
+        $result = $this->db->query( $query, array('usuario'=>$curso))->result();
+
+        return $result;
+    }
+
+
+    public function obtener_docentes_ayudantes($curso){
+        $query = "SELECT * FROM obtener_datos_docente_invitado_no_curso(?)";
+        $result = $this->db->query( $query, array('usuario'=>$curso))->result();
+
+        return $result;
+    }
+
+    public function registrar_ayudante_invitado($curso, $alumno){
+        $insert_user_stored_proc = "CALL agregar_ayudante_instancia_curso(?, ?)";
+        $data = array('instancia_curso' => $curso, 'alumno' => $alumno);
+        $result = $this->db->query($insert_user_stored_proc, $data);
+        if ($result !== NULL) {
+            return TRUE;
+        }
+        return FALSE;
+    }
+
+    public function registrar_docente_invitador($curso, $docente){
+        $insert_user_stored_proc = "CALL agregar_docente_invitado_instancia_curso(?, ?)";
+        $data = array('instancia_curso' => $curso, 'docente' => $docente);
+        $result = $this->db->query($insert_user_stored_proc, $data);
+        if ($result !== NULL) {
+            return TRUE;
+        }
+        return FALSE;
+    }
 }
 ?>
